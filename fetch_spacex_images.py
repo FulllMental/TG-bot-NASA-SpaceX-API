@@ -1,8 +1,9 @@
 import requests
 import pathlib
+from support_file import directory
 
 
-def fetch_spacex_launch(directory, launch_number):
+def fetch_spacex_launch(launch_number):
     url = f"https://api.spacexdata.com/v3/launches/{launch_number}"
     response_links = requests.get(url)
     response_links.raise_for_status()
@@ -20,6 +21,5 @@ def fetch_spacex_launch(directory, launch_number):
 
 
 if __name__ == '__main__':
-    directory = 'images'
-    launch_number = input('Введите номер запуска: ')
-    fetch_spacex_launch(directory, launch_number)
+    launch_number = input('Введите номер запуска SpaceX: ')
+    fetch_spacex_launch(launch_number)
