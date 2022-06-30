@@ -16,8 +16,9 @@ def download_pictures():
 
 
 def send_photo(picture):
-    bot = telegram.Bot(token=telegram_bot_api)
-    bot.send_photo(chat_id='@nasa_photo_lesson', photo=open(fr'{directory}\{picture}', 'rb'))
+    with open(fr'{directory}\{picture}', 'rb') as photo:
+        bot = telegram.Bot(token=telegram_bot_api)
+        bot.send_photo(chat_id='@nasa_photo_lesson', photo=photo)
 
 
 if __name__ == '__main__':
@@ -31,3 +32,4 @@ if __name__ == '__main__':
             send_photo(picture)
             time.sleep(time_limit)
         random.shuffle(pictures)
+
