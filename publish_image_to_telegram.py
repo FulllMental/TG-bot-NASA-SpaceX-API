@@ -15,7 +15,7 @@ def download_pictures():
     fetch_spacex_launch(launch_number='63')
 
 
-def send_photo(picture):
+def send_photo(picture, telegram_bot_api):
     with open(fr'{directory}\{picture}', 'rb') as photo:
         bot = telegram.Bot(token=telegram_bot_api)
         bot.send_photo(chat_id=chat_id, photo=photo)
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     download_pictures()
     while True:
         for picture in pictures:
-            send_photo(picture)
+            send_photo(picture, telegram_bot_api)
             time.sleep(time_limit)
         random.shuffle(pictures)
 
