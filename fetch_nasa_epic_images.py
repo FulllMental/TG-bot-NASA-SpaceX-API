@@ -1,7 +1,9 @@
 import requests
 import pathlib
 import datetime
-from support_file import nasa_token, directory
+import os
+from dotenv import load_dotenv
+from support_file import directory
 
 
 def download_nasa_epic(nasa_token):
@@ -24,4 +26,6 @@ def download_nasa_epic(nasa_token):
 
 
 if __name__ == '__main__':
+    load_dotenv()
+    nasa_token = os.getenv("NASA_TOKEN")
     download_nasa_epic(nasa_token)

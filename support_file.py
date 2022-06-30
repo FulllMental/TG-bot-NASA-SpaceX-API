@@ -1,9 +1,4 @@
 import os
-from dotenv import load_dotenv
-load_dotenv()
-telegram_bot_api = os.getenv("TELEGRAM_BOT_API")
-nasa_token = os.getenv("NASA_TOKEN")
-time_limit = int(os.getenv("TIME_LIMIT"))
 directory = 'images'
 
 
