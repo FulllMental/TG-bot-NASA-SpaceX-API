@@ -47,7 +47,8 @@
 ```
 NASA_TOKEN=API-токен сайта NASA
 TELEGRAM_BOT_API=API-токен телеграм бота
-TIME_LIMIT=14400
+TIME_LIMIT=14400 - длительность перерыва между постами (в секундах)
+CHAT_ID=@your_chat_name - имя вашего телеграм канала
 ```
 
 Python3 должен быть уже установлен. 

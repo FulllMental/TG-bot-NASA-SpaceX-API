@@ -18,11 +18,12 @@ def download_pictures():
 def send_photo(picture):
     with open(fr'{directory}\{picture}', 'rb') as photo:
         bot = telegram.Bot(token=telegram_bot_api)
-        bot.send_photo(chat_id='@nasa_photo_lesson', photo=photo)
+        bot.send_photo(chat_id=chat_id, photo=photo)
 
 
 if __name__ == '__main__':
     load_dotenv()
+    chat_id = os.getenv("CHAT_ID")
     telegram_bot_api = os.getenv("TELEGRAM_BOT_API")
     nasa_token = os.getenv("NASA_TOKEN")
     time_limit = int(os.getenv("TIME_LIMIT"))
