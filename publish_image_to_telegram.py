@@ -15,22 +15,22 @@ def download_pictures():
     fetch_spacex_launch(launch_number='63')
 
 
-def send_photo(picture, telegram_bot_api):
+def send_photo(picture, api_bot_token):
     with open(fr'{directory}\{picture}', 'rb') as photo:
-        bot = telegram.Bot(token=telegram_bot_api)
+        bot = telegram.Bot(token=api_bot_token)
         bot.send_photo(chat_id=chat_id, photo=photo)
 
 
 if __name__ == '__main__':
     load_dotenv()
     chat_id = os.getenv("CHAT_ID")
-    telegram_bot_api = os.getenv("TELEGRAM_BOT_API")
+    api_bot_token = os.getenv("API_BOT_TOKEN")
     nasa_token = os.getenv("NASA_TOKEN")
     time_limit = int(os.getenv("TIME_LIMIT"))
     download_pictures()
     while True:
         for picture in pictures:
-            send_photo(picture, telegram_bot_api)
+            send_photo(picture, api_bot_token)
             time.sleep(time_limit)
         random.shuffle(pictures)
 
