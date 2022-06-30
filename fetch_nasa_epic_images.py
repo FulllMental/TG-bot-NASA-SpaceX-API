@@ -7,8 +7,9 @@ from support_file import directory
 
 
 def download_nasa_epic(nasa_token):
-    url = f'https://api.nasa.gov/EPIC/api/natural?api_key={nasa_token}'
-    response_links = requests.get(url)
+    url = f'https://api.nasa.gov/EPIC/api/natural'
+    payload = {"api_key": nasa_token}
+    response_links = requests.get(url, params=payload)
     response_links.raise_for_status()
     picture_names = [item["image"] for item in response_links.json()]
 
@@ -18,7 +19,7 @@ def download_nasa_epic(nasa_token):
     for name_number, picture_date in enumerate(epic_dates):
         filename = f'{directory}/EPIC{name_number}.png'
 
-        response_picture = requests.get(f'https://api.nasa.gov/EPIC/archive/natural/{picture_date}/png/{picture_names[name_number]}.png?api_key={nasa_token}')
+        response_picture = requests.get(f'https://api.nasa.gov/EPIC/archive/natural/{picture_date}/png/{picture_names[name_number]}.png', params=payload)
         response_picture.raise_for_status()
 
         with open(filename, 'wb') as file:

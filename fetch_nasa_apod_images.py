@@ -16,9 +16,10 @@ def get_extension(nasa_picture_url):
 
 
 def download_nasa_apod(nasa_token, img_count):
-    nasa_picture_url = f'https://api.nasa.gov/planetary/apod?api_key={nasa_token}'
-    payload = {"count": img_count}
-    response_links = requests.get(nasa_picture_url, params=payload)
+    url = f'https://api.nasa.gov/planetary/apod'
+    payload = {"api_key": nasa_token,
+               "count": img_count}
+    response_links = requests.get(url, params=payload)
     response_links.raise_for_status()
     nasa_links = [link["url"] for link in response_links.json()]
     pathlib.Path(f'{directory}').mkdir(parents=True, exist_ok=True)
