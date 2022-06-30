@@ -45,9 +45,9 @@
 
 В итоге эти данные должны быть внесены в ```.env``` файл в таком виде:
 ```
-NASA_TOKEN = API-токен сайта NASA
-TELEGRAM_BOT_API = API-токен телеграм бота
-TIME_LIMIT = 14400
+NASA_TOKEN=API-токен сайта NASA
+TELEGRAM_BOT_API=API-токен телеграм бота
+TIME_LIMIT=14400
 ```
 
 Python3 должен быть уже установлен. 
