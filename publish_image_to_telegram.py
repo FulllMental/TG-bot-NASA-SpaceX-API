@@ -3,7 +3,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
-from support_file import choose_file, directory
+from support_file import pictures, directory
 from fetch_spacex_images import fetch_spacex_launch
 from fetch_nasa_apod_images import download_nasa_apod
 from fetch_nasa_epic_images import download_nasa_epic
@@ -21,15 +21,13 @@ def send_photo(picture):
 
 
 if __name__ == '__main__':
-
     load_dotenv()
     telegram_bot_api = os.getenv("TELEGRAM_BOT_API")
     nasa_token = os.getenv("NASA_TOKEN")
     time_limit = int(os.getenv("TIME_LIMIT"))
     download_pictures()
-    pictures_list = choose_file()
     while True:
-        for picture in pictures_list:
+        for picture in pictures:
             send_photo(picture)
             time.sleep(time_limit)
-        random.shuffle(pictures_list)
+        random.shuffle(pictures)
