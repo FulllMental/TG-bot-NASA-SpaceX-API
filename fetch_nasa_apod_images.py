@@ -19,20 +19,20 @@ def download_nasa_apod(nasa_token, img_count):
     url = f'https://api.nasa.gov/planetary/apod'
     payload = {"api_key": nasa_token,
                "count": img_count}
-    response_links = requests.get(url, params=payload)
-    response_links.raise_for_status()
-    nasa_links = [link["url"] for link in response_links.json()]
+    response = requests.get(url, params=payload)
+    response.raise_for_status()
+    nasa_links = [link["url"] for link in response.json()]
     pathlib.Path(f'{directory}').mkdir(parents=True, exist_ok=True)
 
     for name_number, picture_url in enumerate(nasa_links):
         extension = get_extension(picture_url)
         filename = f'{directory}/NASA{name_number}{extension}'
 
-        response_picture = requests.get(picture_url)
-        response_picture.raise_for_status()
+        picture_response = requests.get(picture_url)
+        picture_response.raise_for_status()
 
         with open(filename, 'wb') as file:
-            file.write(response_picture.content)
+            file.write(picture_response.content)
 
 
 if __name__ == '__main__':
