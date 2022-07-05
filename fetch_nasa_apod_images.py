@@ -2,7 +2,6 @@ import requests
 import pathlib
 import os
 from dotenv import load_dotenv
-from support_file import directory
 from os.path import splitext
 from urllib.parse import unquote, urlsplit
 
@@ -36,6 +35,7 @@ def download_nasa_apod(nasa_token, img_count):
 
 
 if __name__ == '__main__':
+    directory = 'images'
     load_dotenv()
     nasa_token = os.getenv("NASA_TOKEN")
     img_count = input('Сколько фото необходимо скачать: ')

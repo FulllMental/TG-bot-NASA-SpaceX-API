@@ -1,3 +1,2 @@
 import os
-directory = 'images'
-pictures = os.listdir(directory)
+pictures = os.listdir('images')

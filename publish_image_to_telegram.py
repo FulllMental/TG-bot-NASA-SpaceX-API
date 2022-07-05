@@ -3,7 +3,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
-from support_file import pictures, directory
+from support_file import pictures
 from fetch_spacex_images import fetch_spacex_launch
 from fetch_nasa_apod_images import download_nasa_apod
 from fetch_nasa_epic_images import download_nasa_epic
@@ -23,6 +23,7 @@ def send_photo(picture, api_bot_token):
 
 if __name__ == '__main__':
     load_dotenv()
+    directory = 'images'
     chat_id = os.getenv("CHAT_ID")
     api_bot_token = os.getenv("API_BOT_TOKEN")
     nasa_token = os.getenv("NASA_TOKEN")
