@@ -10,9 +10,9 @@ def download_nasa_epic(nasa_token):
     payload = {"api_key": nasa_token}
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    response_data = response.json()
-    picture_names = [item["image"] for item in response_data]
-    epic_dates = [(datetime.datetime.fromisoformat(item["date"])).strftime("%Y/%m/%d") for item in response_data]
+    response_payload = response.json()
+    picture_names = [item["image"] for item in response_payload]
+    epic_dates = [(datetime.datetime.fromisoformat(item["date"])).strftime("%Y/%m/%d") for item in response_payload]
     pathlib.Path(f'{directory}').mkdir(parents=True, exist_ok=True)
 
     for name_number, picture_date in enumerate(epic_dates):
