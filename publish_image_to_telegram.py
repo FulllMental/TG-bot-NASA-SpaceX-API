@@ -10,13 +10,14 @@ from fetch_nasa_epic_images import download_nasa_epic
 
 
 def download_pictures():
-    download_nasa_apod(nasa_token, img_count='3')
-    download_nasa_epic(nasa_token)
-    fetch_spacex_launch(launch_number='63')
+    download_nasa_apod(nasa_token, directory, img_count='3')
+    download_nasa_epic(directory, nasa_token)
+    fetch_spacex_launch(directory, launch_number='63')
 
 
 def send_photo(picture, api_bot_token):
-    with open(fr'{directory}\{picture}', 'rb') as photo:
+    file_path = os.path.join(directory, picture)
+    with open(file_path, 'rb') as photo:
         bot = telegram.Bot(token=api_bot_token)
         bot.send_photo(chat_id=chat_id, photo=photo)
 

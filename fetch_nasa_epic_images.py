@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 
-def download_nasa_epic(nasa_token):
+def download_nasa_epic(directory, nasa_token):
     url = f'https://api.nasa.gov/EPIC/api/natural'
     payload = {"api_key": nasa_token}
     response = requests.get(url, params=payload)
@@ -29,4 +29,4 @@ if __name__ == '__main__':
     directory = 'images'
     load_dotenv()
     nasa_token = os.getenv("NASA_TOKEN")
-    download_nasa_epic(nasa_token)
+    download_nasa_epic(directory, nasa_token)

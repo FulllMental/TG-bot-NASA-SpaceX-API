@@ -14,7 +14,7 @@ def get_extension(nasa_picture_url):
     return file_extension[1]
 
 
-def download_nasa_apod(nasa_token, img_count):
+def download_nasa_apod(nasa_token, directory, img_count):
     url = f'https://api.nasa.gov/planetary/apod'
     payload = {"api_key": nasa_token,
                "count": img_count}
@@ -39,4 +39,4 @@ if __name__ == '__main__':
     load_dotenv()
     nasa_token = os.getenv("NASA_TOKEN")
     img_count = input('Сколько фото необходимо скачать: ')
-    download_nasa_apod(nasa_token, img_count)
+    download_nasa_apod(nasa_token, directory, img_count)
